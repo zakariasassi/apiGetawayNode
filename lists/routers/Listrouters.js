@@ -1,11 +1,8 @@
 const express = require('express');
 
 const router = express.Router();
-// const crudController = require('../controller/crud')
+ const crudController = require('../controller/crud')
 
-router.get('/getlists' ,  (req , res) => {
-    console.log("call")
-    res.send( "Hi From Lists")
-})
+router.get('/getlists' , crudController.getAllLists)
 
 module.exports = router;

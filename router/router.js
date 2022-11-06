@@ -5,12 +5,7 @@ const ServiceRepistory = require('./Services.json')
 router.all('/:apiName/:path' , (req , res ) => { 
     console.log(req.params.apiName)
     if(ServiceRepistory.services[req.params.apiName].url){
-    axios({
-        method: req.method,
-        url : ServiceRepistory.services[req.params.apiName].url + req.params.path ,
-        headers: req.headers,
-        data : req.data
-    }).then((response) => {
+    axios.get(ServiceRepistory.services[req.params.apiName].url + req.params.path).then((response) => {
         res.send(response.data)
 }).catch((e) => {
     console.log(e)

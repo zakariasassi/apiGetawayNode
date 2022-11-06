@@ -15,15 +15,15 @@ const sqlserver = mssql.connect(con , (err) => {
 
 
 
-
-
 exports.getAllLists = (req , res ) => {
-    const request = sqlserver.Request();
+    const request = new mssql.Request();
 
     request.query('select *  from List_tbl', (err, result) => {
         if(err) {console.log(err)}
-        console.log(result.recordset[0].number) 
-    
+
+        res.render('../views/pages/index.ejs' , {
+            data:result.recordset,
+        })
     })
 }
 
